@@ -9,7 +9,7 @@ const port = 8080;
 const home = require("./src/routes/home");
 
 //앱 세팅
-app.set("views", "./views");
+app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
 app.use("/", home);
