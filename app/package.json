@@ -1,15 +1,14 @@
 {
-  "name": "was-cch",
+  "name": "cch-was",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node ./bin/www.js", 
+    "start": "node ./bin/www.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
-
   "dependencies": {
     "ejs": "^3.1.8",
     "express": "^4.18.2"
