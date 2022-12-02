@@ -5,8 +5,6 @@ const user = {
     psword: ["1234","1234","123456"],
 };
 
-
-
 const output = {
     home: (req, res) => {
         res.render("home/index");
@@ -35,7 +33,6 @@ const process = {
             success: false,
             msg: "로그인에 실패하셨습니다.",
         });
-        
     },
 };
 
