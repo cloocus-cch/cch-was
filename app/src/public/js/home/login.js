@@ -7,9 +7,6 @@ const id = document.querySelector("#id"),
 loginBtn.addEventListener("click", login);
 
 
-
-
-
 function login() {
     const req = {
         id: id.value,
@@ -22,7 +19,9 @@ function login() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(req),
-    }).then((res) => console.log(res.json()));
+    }).then((res) => res.json())
+    .then((res) => console.log(res));
+    //promise 형태로 콘솔에 출력이 되는데 promise가 뭔지 모른다면 추가 공부 필요
+    console.log(res)
 
-    //check
 }
