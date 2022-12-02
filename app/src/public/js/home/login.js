@@ -22,6 +22,5 @@ function login() {
     }).then((res) => res.json())
     .then((res) => console.log(res));
     //promise 형태로 콘솔에 출력이 되는데 promise가 뭔지 모른다면 추가 공부 필요
-    console.log(res)
 
 }
