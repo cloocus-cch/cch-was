@@ -20,7 +20,15 @@ function login() {
         },
         body: JSON.stringify(req),
     }).then((res) => res.json())
-    .then((res) => console.log(res));
-    //promise 형태로 콘솔에 출력이 되는데 promise가 뭔지 모른다면 추가 공부 필요
-
+    .then((res) => {
+        if (res.success) {
+            location.href = "/";
+        } else{
+            alert(res.msg)
+        }
+    })
+    .catch((err) => {
+        console.error(new Error("로그인 중 에러 발생"));
+    })
 }
+//promise 형태로 콘솔에 출력이 되는데 promise가 뭔지 모른다면 추가 공부 필요
