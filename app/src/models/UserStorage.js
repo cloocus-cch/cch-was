@@ -1,14 +1,22 @@
 "use strict";
 
-class UserStorage {
-    static #users = {
-        id: ["wwrim","나개발","강팀장","cch"],
-        psword: ["1234","1234","123456","1234"],
-        name: ["우리밋","나개발","강팀장","찬회"]
-    };
+const db = require("../config/db");
 
-    static getUsers(...fields) {
-        const users = this.#users;
+class UserStorage {
+    static #getUserInfo(data, id){
+        const users = JSON.parse(data);
+        const idx = users.id.indexOf(id);
+        const userKeys = Object.keys(users);
+        const userInfo = userKeys.reduce((newUser, info) => {
+            newUser[info] = user[info][idx];
+            return newUser;
+        }, {});
+    }
+
+    static #getUsers(data, isAll, fields) {
+        const users = JSON.parse(data);
+        if (isAll) return users;
+
         const newUsers = fields.reduce((newUsers, field) => {
             if (users.hasOwnProperty(field)){
                 newUsers[field] = users[field];
@@ -17,26 +25,20 @@ class UserStorage {
         }, {});
         return newUsers;
     }
-
-    static getUsersInfo(id) {
-        const users = this.#users;
-        const idx = users.id.indexOf(id);
-        const usersKeys = Object.keys(users);
-        const userInfo = usersKeys.reduce((newUser, info) => {
-          newUser[info] = users[info][idx];
-          return newUser;
-        }, {});
-  
-        return userInfo;
+    static getUsers(isAll, ...fields) {
     }
 
-    static save(userInfo) {
-        const users = this.#users;
-        users.id.push(userInfo.id);
-        users.name.push(userInfo.name);
-        users.psword.push(userInfo.psword);
+    static getUsersInfo(id) {
+        new Promise((resolve, rehect) =>{
+            db.query("SELECT * FROM users id = ?", [id], (err, data) =>{
+                console.log(data[0]);
+                resolve(data[0]);//33 7:47
+            });
+        })
+        
+    }
 
-        return { success: true};
+    static async save(userInfo) {
     }
 }
 
