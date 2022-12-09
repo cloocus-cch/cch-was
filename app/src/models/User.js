@@ -7,9 +7,14 @@ class User{
     this.body=body;
   }
 
-  login() {
+//async, await : 프라미스를 좀 더 편하게 활용 async이 먼저 실행되기를 기다리고 await가 이후에 실행함.
+
+  async login() {
     const client = this.body
-    const {id, psword} = UserStorage.getUsersInfo(client.id);
+    
+    const { id, psword} = await UserStorage.getUsersInfo(client.id);
+    console.log(id, psword);
+    
     if(id){
         if(id === client.id && psword === client.psword){
             return { success: true};
@@ -19,13 +24,11 @@ class User{
     return { success: false, msg: "존재하지 않는 아이디 입니다." }
   }
 
-  register(){
+  async register(){
     const client = this.body;
-    const response = UserStorage.save(client);
+    const response = await UserStorage.save(client);
     return response;
-
   }
-
 }
 
 module.exports = User;
