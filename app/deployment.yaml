@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-server
+  labels:
+    app: login-server
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: login-server
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: login-server
+    spec:
+      shareProcessNamespace: true
+      containers:
+      - image: vnfmsqkek3/auth-server:latest
+        imagePullPolicy: Always
+        name: login-server
+        ports:
+            - containerPort: 8080
+              protocol: TCP
