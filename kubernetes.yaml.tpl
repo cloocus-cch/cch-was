@@ -19,7 +19,7 @@ metadata:
   labels:
     app: hello-cloudbuild
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: hello-cloudbuild
