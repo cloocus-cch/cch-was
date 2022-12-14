@@ -42,7 +42,7 @@ steps:
     args:
     - '-c'
     - |
-      git clone https://github.com/cks8483/cch-env.git && \
+      gcloud source repos clone cch-env && \
       cd cch-env && \
       git checkout candidate && \
       git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)')
