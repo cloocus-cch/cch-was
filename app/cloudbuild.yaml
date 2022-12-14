@@ -18,7 +18,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     id: Build
     args:
-    - cd app
     - 'build'
     - '-t'
     - 'asia-northeast3-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild:$SHORT_SHA'
@@ -30,7 +29,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     id: Push
     args:
-    - cd app
     - 'push'
     - 'asia-northeast3-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild:$SHORT_SHA'
   # [END cloudbuild]
