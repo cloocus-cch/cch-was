@@ -23,13 +23,13 @@ steps:
   - 'npm ci && node bin/www.js -v'
 
 # This step builds the container image.
-# - name: 'gcr.io/cloud-builders/docker'
-#   id: Build
-#   args:
-#   - 'build'
-#   - '-t'
-#   - 'asia-northeast3-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild:$SHORT_SHA'
-#   - '.'
+- name: 'gcr.io/cloud-builders/docker'
+  id: Build
+  args:
+  - 'build'
+  - '-t'
+  - 'asia-northeast3-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild:$SHORT_SHA'
+  - '.'
 
 # # This step pushes the image to Artifact Registry
 # # The PROJECT_ID and SHORT_SHA variables are automatically
