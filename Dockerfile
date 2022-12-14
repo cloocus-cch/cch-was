@@ -6,7 +6,7 @@ FROM node:16-alpine
 WORKDIR cch-was/app
 
 #파일복사
-COPY package.json package-lock.json ./
+COPY app/package.json app/package-lock.json ./
 
 #package에 딱 맞는 버전만 설치
 RUN npm ci
