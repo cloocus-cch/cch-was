@@ -18,8 +18,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     id: Build
     args:
-    - |
-      cd cch-env &&\
     - 'build'
     - '-t'
     - 'asia-northeast3-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild:$SHORT_SHA'
