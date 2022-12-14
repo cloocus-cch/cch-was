@@ -14,11 +14,11 @@
 
 # [START cloudbuild]
 steps:
-
 # This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
   args:
+  - cd app
   - 'build'
   - '-t'
   - 'asia-northeast3-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild:$SHORT_SHA'
